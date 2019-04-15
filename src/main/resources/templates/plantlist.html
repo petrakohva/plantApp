@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js" ></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
+<title>PlantApp</title>
+</head>
+<body>
+
+	<div>
+	<h1>Kasvit</h1>
+	</div>
+	
+	<div>
+        <br>
+    </div>
+	
+	<div>
+	<h3 th:inline="text">Tervetuloa [[${#httpServletRequest.remoteUser}]]!</h3>
+	</div>
+	
+	<div>
+        <br>
+    </div>
+	
+	<table class="table">
+	<tr>
+	 	<th>Kasvin nimi</th>
+	 	<th>Hankittu</th>
+	 	<th>Lajike</th>
+	 
+	 	<th sec:authorize="hasAuthority('ADMIN')"></th>
+	 	<th sec:authorize="hasAuthority('ADMIN')"></th>
+	 	
+	</tr>
+	<tr th:each= "plant : ${plants}">
+	 	<td th:text= "${plant.name}"></td>
+	 	<td th:text= "${plant.date}"></td>
+	 	<td th:text= "${plant.family.familyName}"></td>
+	
+		
+		<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{/delete/{id}(id=${plant.id})}">Poista</a></td>
+		<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-secondary" th:href="@{/edit/{id}(id=${plant.id})}">Muokkaa</a></td>
+	</tr>
+	</table>
+		<a class="btn btn-success" href="/add">Lisää kasvi</a>
+	
+	<div>
+        <br>
+    </div>
+    
+	<div>
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Kirjaudu ulos" class="btn btn-success"/>
+		</form>
+	</div>
+	
+</body>
+</html>
