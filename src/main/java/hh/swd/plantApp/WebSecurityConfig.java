@@ -26,7 +26,7 @@ import hh.swd.plantApp.web.UserDetailServiceImpl;
 			.and()
 			.authorizeRequests().antMatchers("/index").permitAll()
 			.and()
-			.authorizeRequests().antMatchers("/delete/{id}").hasRole("ADMIN")
+			.authorizeRequests()
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()

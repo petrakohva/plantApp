@@ -8,6 +8,7 @@
 	<title>Kirjaudu sisään</title>
 </head>
 <body>
+	
 	<div th:if="${param.error}">
 		Väärä käyttäjätunnus tai salasana!
 	
@@ -20,12 +21,13 @@
 	
 	<div th:if="${param.logout}">
 		Sinut on kirjattu ulos :)
-		<div>
+		
 		<form th:action="@{/index}" method="post">
 			<input type="submit" value="Takaisin etusivulle" class="btn btn-success"/>
 		</form>
-	</div>
-	</div>
+		</div>
+	
+	
 
 </body>
 </html>

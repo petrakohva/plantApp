@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js" ></script>
+	<title>PlantApp</title>
+</head>
+
+<body>
+	<h1>Muokkaa kasvin tietoja</h1>
+	<div>
+		<form th:object="${plant}" th:action="@{../save}" action="#" method="post">
+			<input type="hidden" th:field="*{id}" class="form-control"/>
+			
+			<label for="name">Kasvin nimi</label>
+			<input type="text" th:field="*{name}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="date">Hankittu</label>
+			<input type="text" th:field="*{date}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			
+			<label for="family">Lajike</label>
+			<select id="familylist" th:field="*{family}" class="form-control">
+       			<option th:each="family: ${family}" th:value="${family.familyId}" th:text="${family.familyName}"></option>
+    		</select>
+    		
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="submit" class="btn btn-success" value="Tallenna"></input>
+		</form>
+	</div>
+	
+</body>
+</html>

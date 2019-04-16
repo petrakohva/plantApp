@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import hh.swd.plantApp.domain.Family;
 import hh.swd.plantApp.domain.FamilyRepository;
 import hh.swd.plantApp.domain.Plant;
 import hh.swd.plantApp.domain.PlantRepository;
@@ -36,7 +37,8 @@ public class PlantController {
 	}
 	
 	
-	//REST
+	
+	//REST LISTING
 	@RequestMapping(value="/plants", method = RequestMethod.GET)
 	public @ResponseBody List<Plant> plantListRest(){
 		return (List<Plant>) plantrepo.findAll();
@@ -47,13 +49,68 @@ public class PlantController {
 		return plantrepo.findById(id);
 	}
 	
-	//LIST
+	
+	
+	//LIST PLANTS
 	@RequestMapping(value="/plantlist", method = RequestMethod.GET)
 	public String plantList(Model model) {
 		model.addAttribute("plants", plantrepo.findAll());
 		return "plantlist";
 	}
 	
+	
+	//ADD A PLANT
+	
+	@RequestMapping(value="/addplant")
+	public String addPlant(Model model) {
+		model.addAttribute("plant", new Plant());
+		model.addAttribute("family", famrepo.findAll());
+		return "addplant";
+	}
+	
+	//SAVE PLANT
+	
+	@RequestMapping(value="/saveplant", method=RequestMethod.POST)
+	public String savePlant(Plant plant) {
+		plantrepo.save(plant);
+		return "redirect:plantlist";	
+	}
+	
+	//ADD A FAMILY
+	
+	@RequestMapping(value="/addfamily")
+	public String addFamily(Model model) {
+		model.addAttribute("family", new Family());
+		return "addfamily";
+	}
+	
+	
+	//SAVE FAMILY
+	
+	@RequestMapping(value="/savefam", method=RequestMethod.POST)
+	public String saveFamily(Family family) {
+		famrepo.save(family);
+		return "redirect:plantlist";	
+	}
+	
+	
+	//DELETE PLANT
+	
+	@RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
+	public String deletePlant(@PathVariable("id") Long id, Model model) {
+		plantrepo.deleteById(id);
+		return "redirect:../plantlist";
+	}
+	
+
+	//EDIT PLANT
+	
+	@RequestMapping(value="/edit/{id}")
+	public String editPlant(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("plant", plantrepo.findById(id));
+		model.addAttribute("family", famrepo.findAll());
+		return "editplant";
+	}
 	
 	
 	
