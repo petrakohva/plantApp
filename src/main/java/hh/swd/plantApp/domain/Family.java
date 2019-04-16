@@ -17,6 +17,7 @@ public class Family {
 	private Long familyId;
 	
 	private String familyName;
+	private String care;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "family")
 	private List<Plant> plants;
@@ -25,9 +26,10 @@ public class Family {
 		
 	}
 	
-	public Family(String familyName) {
+	public Family(String familyName, String care) {
 		super();
 		this.familyName = familyName;
+		this.care = care;
 	}
 
 	
@@ -38,6 +40,10 @@ public class Family {
 
 	public void setFamilyName(String familyName) {
 		this.familyName = familyName;
+	}
+
+	public void setCare(String care) {
+		this.care = care;
 	}
 
 	public void setPlants(List<Plant> plants) {
@@ -52,6 +58,11 @@ public class Family {
 	public String getFamilyName() {
 		return familyName;
 	}
+	
+	
+	public String getCare() {
+		return care;
+	}
 
 	public List<Plant> getPlants() {
 		return plants;
@@ -59,8 +70,11 @@ public class Family {
 
 	@Override
 	public String toString() {
-		return "Family [familyId=" + familyId + ", familyName=" + familyName + "]";
+		return "Family [familyId=" + familyId + ", familyName=" + familyName + ", care=" + care + "]";
 	}
+	
+
+	
 	
 	
 	

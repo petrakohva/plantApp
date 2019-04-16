@@ -1,31 +1,33 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+<html xmlns:th="http://www.thymeleaf.org"
 		 xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js" ></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Kirjaudu sisään</title>
+	<title>PlantApp</title>
 </head>
 <body>
-	
-	<div th:if="${param.error}">
-		Väärä käyttäjätunnus tai salasana!
-	
-		<form th:action="@{/login}" method="post">
-		<div><label> Käyttäjätunnus: <input type="text" name="username"/> </label></div>
-		<div><label> Salasana: <input type="password" name="password"/></label></div>
-		<div><input type="submit" value="Kirjaudu sisään"/></div>
-	</form>
-	</div>
-	
+	<div>
+	</br>
 	<div th:if="${param.logout}">
-		Sinut on kirjattu ulos :)
+		<h2>Sinut on kirjattu ulos :)</h2>
 		
 		<form th:action="@{/index}" method="post">
 			<input type="submit" value="Takaisin etusivulle" class="btn btn-success"/>
 		</form>
 		</div>
+	</br>
+	<form th:action="@{/login}" method="post">
+		<div><label> Käyttäjätunnus: <input type="text" name="username"/> </label></div>
+		<div><label> Salasana: <input type="password" name="password"/></label></div>
+		<div><input type="submit" value="Kirjaudu sisään" class="btn btn-success"/></div>
+	</form>
+	</div>
+	
+	<div th:if="${param.error}">
+		Väärä käyttäjätunnus tai salasana!
+	</div>
 	
 	
 

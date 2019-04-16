@@ -32,6 +32,7 @@
 	 	<th>Kasvin nimi</th>
 	 	<th>Hankittu</th>
 	 	<th>Lajike</th>
+	 	<th>Hoito-ohje</th>
 	 
 	 	<th sec:authorize="hasAuthority('ADMIN')"></th>
 	 	<th sec:authorize="hasAuthority('ADMIN')"></th>
@@ -41,6 +42,7 @@
 	 	<td th:text= "${plant.name}"></td>
 	 	<td th:text= "${plant.date}"></td>
 	 	<td th:text= "${plant.family.familyName}"></td>
+	 	<td th:text= "${plant.family.care}"></td>
 	
 		
 		<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{/delete/{id}(id=${plant.id})}">Poista</a></td>

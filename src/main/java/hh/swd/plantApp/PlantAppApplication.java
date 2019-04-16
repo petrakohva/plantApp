@@ -24,8 +24,8 @@ public class PlantAppApplication {
 	@Bean
 	public CommandLineRunner bookDemo(PlantRepository plantrepo, FamilyRepository famrepo, UserRepository userrepo ) {
 		return (args) -> {
-			famrepo.save(new Family("Monstera"));
-			famrepo.save(new Family("Pothos"));
+			famrepo.save(new Family("Monstera", "Tykkää valoisasta, mutta ei suoraa paahdetta. Kastelu kun multa on kuivaa. Sumutella kannattaa aina kun ehtii, etenkin lehtien alapinnoilta."));
+			famrepo.save(new Family("Pothos", "Pärjää aika pienellä hoidolla. Kastelu kun multa on kuivaa ja pitää sumuttelusta sekä auringonvalosta."));
 			
 			plantrepo.save(new Plant("Peikonlehti", "Syyskuu 2018", famrepo.findByFamilyName("Monstera").get(0)));
 			plantrepo.save(new Plant("Kultaköynnös", "Elokuu 2018", famrepo.findByFamilyName("Pothos").get(0)));
