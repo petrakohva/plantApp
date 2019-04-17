@@ -30,7 +30,8 @@ public class PlantController {
 	@Autowired
 	private FamilyRepository famrepo;
 	
-
+	
+	//IMAGES?
     @RequestMapping(value = "/marble", method = RequestMethod.GET,
             produces = MediaType.IMAGE_JPEG_VALUE)
 
@@ -43,8 +44,9 @@ public class PlantController {
     }
 	
 	//INDEX
-	@RequestMapping(value="/index")
-	public String index() {
+	@RequestMapping(value="/index", method = RequestMethod.GET)
+	public String index(Model model) {
+		model.addAttribute("plants", plantrepo.findAll());
 		return "index";
 	}
 	

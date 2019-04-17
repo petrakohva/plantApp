@@ -7,8 +7,8 @@
 
 <title>PlantApp</title>
 </head>
-<body>
-
+<body style="background-color: lightgreen;">
+	<div style="margin: 20px; background-color: white; padding: 20px">
 	<div>
 		<h2>Tervetuloa!</h2>
 	</div>
@@ -28,11 +28,12 @@
 	
 	</tr>
 	</table>
-		
 	
 	<form th:action="@{/login}" method="get">
 			<input type="submit" value="Kirjaudu sisään" class="btn btn-success"/>
-		</form>
+		</form> <a class="btn btn-success" href="/marble">Katso kuva</a>
+	</div>
+
 
 </body>
 </html>
