@@ -50,6 +50,12 @@ public class PlantController {
 		return "index";
 	}
 	
+	@RequestMapping(value="/index", method = RequestMethod.POST)
+	public String index2(Model model) {
+		model.addAttribute("plants", plantrepo.findAll());
+		return "index";
+	}
+	
 	//LOGIN
 	@RequestMapping(value="/login")
 	public String login() {

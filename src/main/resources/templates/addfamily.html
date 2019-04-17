@@ -7,21 +7,27 @@
 	<title>PlantApp</title>
 </head>
 
-<body>
+<body style="background-color: lightgreen;">
+	<div style="margin: 20px; background-color: white; padding: 20px;">
+	<div>
 	<h1>Lisää lajike</h1>
 	<div>
 		<form th:object="${family}" th:action="@{savefam}" action="#" method="post">
 		
 			<label for="familyName">Lajikkeen nimi</label>
+			</br>
 			<input type="text" id="familyName" th:field="*{familyName}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
 			<label for="care">Hoito-ohjeet</label>
-			<input type="text" id="care" th:field="*{care}" />
+			</br>
+			<textarea rows="5" cols="60" id="care" th:field="*{care}"></textarea>
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
-			<input class="btn btn-success" type="submit" value="Tallenna"></input>
+			<input class="btn btn-success" type="submit" value="Tallenna"></input> <a class="btn btn-danger" href="/plantlist">Peruuta</a>
 		</form>
+	</div>
+	</div>
 	</div>
 </body>
 

@@ -7,26 +7,34 @@
 	<title>PlantApp</title>
 </head>
 
-<body>
+<body style="background-color: lightgreen;">
+	<div style="margin: 20px; background-color: white; padding: 20px;">
+	<div>
 	<h1>Lisää kasvi</h1>
 	<div>
 		<form th:object="${plant}" th:action="@{saveplant}" action="#" method="post">
 			<label for="name">Kasvin nimi</label>
+			</br>
 			<input type="text" id="name" th:field="*{name}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
 			<label for="date">Hankittu</label>
+			</br>
 			<input type="text" id="date" th:field="*{date}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
 
 			<label for="familylist">Lajike</label>
-			 <select id="familylist" th:field="*{family}" class="form-control">
+			 <select style="clear: both; display: block; height: 50px; width: 150px;"id="familylist" th:field="*{family}" class="form-control">
        			<option th:each="family: ${family}" th:value="${family.familyId}" th:text="${family.familyName}"></option>
     		</select>
-    		<div style="clear: both; display: block; height: 10px;"></div>	
+    		<div style="clear: both; display: block; height: 10px; width: 60px;"></div>	
 			
-			<input class="btn btn-success" type="submit" value="Tallenna"></input>
+			<input class="btn btn-success" type="submit" value="Tallenna"></input> <a class="btn btn-danger" href="/plantlist">Peruuta</a>
+			
+			
 		</form>
+	</div>
+	</div>
 	</div>
 </body>
 

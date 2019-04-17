@@ -26,6 +26,8 @@ import hh.swd.plantApp.web.UserDetailServiceImpl;
 			.and()
 			.authorizeRequests().antMatchers("/index").permitAll()
 			.and()
+			.authorizeRequests().antMatchers("/marble").permitAll()
+			.and()
 			.authorizeRequests()
 				.anyRequest().authenticated()
 				.and()
